@@ -1,0 +1,9 @@
+{
+  "name": "樂隊／樂旗隊編舞與排練平台",
+  "short_name": "隊形編排室",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d1220",
+  "theme_color": "#171e30"
+}
