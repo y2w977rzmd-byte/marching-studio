@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>隊形編排室 v3.1 音樂與動作同步版</title><style>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>隊形編排室 v3.2 音樂與動作同步版</title><style>
 :root{font-family:-apple-system,BlinkMacSystemFont,'Microsoft JhengHei',sans-serif;color:#e8eefb;background:#0d1220}*{box-sizing:border-box}body{margin:0}header{padding:15px 18px;background:#171e30;border-bottom:1px solid #313d58;display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}h1{font-size:20px;margin:0}small{color:#9faec9}button,select,input{font:inherit}button{border:1px solid #465673;background:#26334d;color:#fff;border-radius:9px;padding:9px 12px;cursor:pointer}button:hover{background:#33476c}button.active,.primary{background:#1c7a72;border-color:#37aea0}button.danger{border-color:#8b4e59}input,select{background:#172239;border:1px solid #4a5b7c;color:white;padding:8px;border-radius:8px;min-width:0}input[type=number]{width:80px}.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:14px;padding:14px;max-width:1500px;margin:auto}.panel{background:#171f33;border:1px solid #303e5b;border-radius:15px;padding:14px}.sidebar{display:flex;flex-direction:column;gap:12px}.field{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:9px 0}.field label{font-size:13px;color:#c6d1e5}.field input,.field select{max-width:160px}.sectiontitle{font-weight:700;margin:4px 0 10px}.controls{display:flex;gap:7px;flex-wrap:wrap}.controls button{font-size:13px;padding:8px}.hint{font-size:12px;line-height:1.6;color:#9faec9}.canvasShell{padding:8px;background:#101729;border:1px solid #34435e;border-radius:12px;overflow:hidden}.canvas{width:100%;display:block;touch-action:none;user-select:none}.topline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}.sceneBar{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.sceneBar button{padding:8px 10px}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#b9c8e1;margin-top:10px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.status{color:#b7c8e5;font-size:12px;padding-top:8px}input[type=range]{width:100%;accent-color:#30c0ae}.footerrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}.filelabel{border:1px solid #465673;background:#26334d;color:#fff;border-radius:9px;padding:9px 12px;cursor:pointer;font-size:13px}#file{display:none}#toast{color:#9de3bf;font-size:12px;min-height:16px}.wide{grid-column:2}#rosterBreakdown{border-top:1px solid #35425b;padding-top:10px}#targetTotal,#actualTotal{font-size:14px} @media(max-width:850px){.layout{grid-template-columns:1fr}.wide{grid-column:1}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:530px){.sidebar{display:flex}.layout{padding:8px;gap:8px}.panel{padding:11px}header{padding:12px}h1{font-size:17px}.controls button{padding:7px}}
  .instrumentGrid{display:grid;grid-template-columns:1fr 70px;gap:7px;align-items:center;margin-bottom:7px;font-size:13px}.instrumentGrid input{width:70px!important}.audit{white-space:pre-line;font-size:12px;line-height:1.65;color:#d4e2f5}.audit strong{color:#f5d186}.sub{font-size:12px;color:#aebdd4}.tiny{font-size:12px}.panel select.full{width:100%;max-width:100%} @media(max-width:700px){button,select,input{min-height:42px}input,select{font-size:16px!important}.canvasShell{overscroll-behavior:contain}.canvas{touch-action:none}}
 </style><style id="simpleModeStyles">
@@ -136,11 +136,11 @@ body.student-view27 #svg [data-id]{cursor:default!important}
 body.student-view27 .footerrow #reset{display:none}
 body.simple-mode .canvasShell svg{touch-action:none}
 @media(max-width:650px){.creative27{margin:8px;padding:12px}.creative-tools{gap:6px}.creative-tools button{font-size:12px;padding:7px 10px}}
-</style></head><body class="simple-mode"><div class="mode-switcher" id="modeSwitcher" role="region" aria-label="操作模式">
+</style><style id="safeShareStyles32">.safe-share32{margin-top:12px;padding:12px;background:#132c32;border:1px solid #638e89;border-radius:13px}.safe-share32 p{margin:0 0 8px}.safe-share32 input{display:block;width:100%;padding:11px;border:1px solid #8eb3b3;border-radius:9px;background:#f5fcff;color:#102a37;font-size:14px;margin-bottom:9px}.safe-share32 button{background:#b8f2c4!important;color:#153b29!important;border-radius:10px}.safe-share32[hidden]{display:none!important}</style></head><body class="simple-mode"><div class="mode-switcher" id="modeSwitcher" role="region" aria-label="操作模式">
 <div class="mode-row"><strong>🎼 編舞工作台</strong><div><button type="button" id="simpleModeBtn" aria-pressed="true">✨ 簡單模式</button> <button type="button" id="advancedModeBtn" aria-pressed="false">⚙️ 專業工具</button></div></div>
 <p class="mode-guide" id="modeGuide">基本操作：設定人數 → 選隊形 → 新增段落 → 音樂與動作 → 播放預覽。進階設定已收起，不會刪除任何資料。</p>
 <div class="quick-actions"><button type="button" data-go="rosterPanel">① 人數</button><button type="button" data-go="quickFormation">② 隊形</button><button type="button" data-go="scenePanel">③ 下一段</button><button type="button" data-go="motionPanel">④ 音樂／動作</button><button type="button" data-go="stagePanel">⑤ 舞台</button></div>
-</div><header><div><h1>🥁 隊形編排室 <small>March & Field Studio · v3.1</small></h1><small>樂隊・樂旗隊｜遊行與戶外定點表演</small></div><div class="controls"><button id="save">下載作品</button><label class="filelabel" for="file">開啟作品</label><input id="file" type="file" accept=".json,application/json"></div></header>
+</div><header><div><h1>🥁 隊形編排室 <small>March & Field Studio · v3.2</small></h1><small>樂隊・樂旗隊｜遊行與戶外定點表演</small></div><div class="controls"><button id="save">下載作品</button><label class="filelabel" for="file">開啟作品</label><input id="file" type="file" accept=".json,application/json"></div></header>
 <div id="bootStatus" role="status" style="margin:10px 14px;padding:12px;border:1px solid #d9a348;background:#33291d;color:#ffe4a8;border-radius:9px;font-size:14px;line-height:1.5">⚠ 互動程式尚未啟動。如果你在 iPhone「檔案」或 ChatGPT 的預覽畫面閱讀這個檔案，按鈕可能完全無法操作。請改由可執行 JavaScript 的瀏覽器網頁網址開啟；本機 HTML 預覽未必支援。</div><div class="student-guide" id="studentGuide24" aria-label="快速開始編舞">
 <h2>🎵 來排一場精彩的表演！</h2>
 <p>第一次玩也沒關係。先試試範例，看看隊伍如何從方陣走成 V 字形，再慢慢改成你的創意。</p>
@@ -150,7 +150,7 @@ body.simple-mode .canvasShell svg{touch-action:none}
 <button type="button" id="formation24">🔷 換個隊形</button>
 <button type="button" id="next24">➕ 下一個畫面</button>
 <button type="button" id="save24">💾 保存作品</button>
-</div><div class="student-feedback" id="feedback24" aria-live="polite"></div></div><div class="share25" id="sharePanel26" aria-label="分享作品"><div class="share25title">💚 分享給隊友</div><p>把編舞傳到 LINE 群組，大家就能一起討論。</p><div class="share25buttons"><button type="button" id="shareWork26">📤 分享作品檔案</button><button type="button" id="shareSite26">💚 傳 LINE 網站連結</button><button type="button" id="openWork26">📂 開啟收到的作品</button></div><p class="share25note" id="shareNote26" aria-live="polite">分享作品會傳送隊形與走位資料，不包含音樂檔。對方下載後可在網站開啟並修改自己的副本。</p></div><div class="creative27" id="creative27">
+</div><div class="student-feedback" id="feedback24" aria-live="polite"></div></div><div class="share25" id="sharePanel26" aria-label="分享作品"><div class="share25title">💚 分享給隊友</div><p>把編舞傳到 LINE 群組，大家就能一起討論。</p><div class="share25buttons"><button type="button" id="shareWork26">📤 分享作品檔案</button><button type="button" id="shareSite26">💚 複製連結到 LINE</button><button type="button" id="openWork26">📂 開啟收到的作品</button></div><p class="share25note" id="shareNote26" aria-live="polite">分享作品會傳送隊形與走位資料，不包含音樂檔。對方下載後可在網站開啟並修改自己的副本。</p></div><div class="creative27" id="creative27">
 <div class="creative-head"><strong>🎨 編舞小幫手</strong><span>直接點隊員、拖曳位置；用下方工具快速完成</span></div>
 <div class="creative-tools">
 <button id="undo27" type="button">↶ 上一步</button><button id="zoomOut27" type="button">− 縮小</button><button id="zoomIn27" type="button">＋ 放大</button><button id="zoomReset27" type="button">適合畫面</button>
@@ -484,10 +484,21 @@ note('此瀏覽器無法直接分享作品檔，已下載作品。請打開 LINE
 };
 $('shareSite26').onclick=async()=>{
 const url=location.origin+location.pathname;
-const lineUrl='https://line.me/R/msg/text/?'+encodeURIComponent('一起來編舞！\n'+url);
-try{const w=window.open(lineUrl,'_blank','noopener,noreferrer');if(w){note('已開啟 LINE 分享頁面。請選擇聊天對象。注意：這是網站連結，不包含目前作品。');return}}catch(e){}
-if(navigator.share){try{await navigator.share({title:'樂隊編舞室',url});note('已開啟分享選單，請選擇 LINE。');return}catch(e){if(e.name==='AbortError')return}}
-try{await navigator.clipboard.writeText(url);note('已複製網站連結，貼到 LINE 即可。')}catch(e){note('請複製網站網址：'+url)}
+let box=$('safeShareBox32');
+if(!box){
+box=document.createElement('div');box.id='safeShareBox32';box.className='safe-share32';
+const label=document.createElement('p');label.textContent='將下方網址複製後，開啟 LINE 並貼到聊天訊息。這個按鈕不會離開編舞室。';
+const input=document.createElement('input');input.type='text';input.id='safeShareInput32';input.readOnly=true;input.setAttribute('aria-label','可複製的編舞室網址');
+const copy=document.createElement('button');copy.type='button';copy.textContent='📋 複製網址';copy.onclick=async()=>{
+const value=input.value;
+try{if(!navigator.clipboard||!navigator.clipboard.writeText)throw Error('clipboard unavailable');await navigator.clipboard.writeText(value);note('已複製！現在可以自行開啟 LINE 並貼上。')}
+catch(e){input.focus();input.select();note('請長按上方網址，選擇「複製」，再貼到 LINE。')}
+};
+box.append(label,input,copy);$('sharePanel26').append(box);
+}
+const input=$('safeShareInput32');input.value=url;box.hidden=false;
+try{if(!navigator.clipboard||!navigator.clipboard.writeText)throw Error('clipboard unavailable');await navigator.clipboard.writeText(url);note('已複製網站連結。請自行切換到 LINE 貼上；編舞室不會自動跳轉。')}
+catch(e){input.focus();input.select();note('網址已顯示在下方。請長按網址複製，再貼到 LINE。')}
 };
 $('openWork26').onclick=()=>{$('file').click();note('請選擇隊友傳來的作品檔案（.json）。')};
 }
