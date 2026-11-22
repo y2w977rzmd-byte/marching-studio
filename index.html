@@ -428,9 +428,16 @@ const $=id=>document.getElementById(id),note=t=>$('shareNote26').textContent=t;
 const filename='我的樂隊編舞作品.json';
 $('shareWork26').onclick=async()=>{
 try{
-const raw=localStorage.getItem('marchingShareExport26');
-$('save').click();
-note('正在準備作品檔案。若瀏覽器沒有顯示分享選單，請從下載項目選擇作品檔，再用 LINE 傳送。');
+let captured=null;
+const original=URL.createObjectURL;
+try{URL.createObjectURL=function(blob){if(blob instanceof Blob&&blob.type.includes('json'))captured=blob;return original.call(URL,blob)};$('save').click()}finally{URL.createObjectURL=original}
+if(captured&&navigator.share&&typeof File!=='undefined'){
+const file=new File([captured],filename,{type:'application/json'});
+if(!navigator.canShare||navigator.canShare({files:[file]})){
+try{await navigator.share({title:'我的樂隊編舞',text:'這是我的編舞作品，下載後可在編舞室開啟。',files:[file]});note('已開啟分享選單，請選 LINE 傳送作品檔。');return}catch(e){if(e.name==='AbortError'){note('已取消分享。作品也已下載。');return}}
+}
+}
+note('作品已下載。請在 LINE 聊天室點選「＋」→「檔案」，選擇下載的作品檔傳給隊友。');
 }catch(e){note('請使用「保存作品」下載後，在 LINE 傳送檔案。')}
 };
 $('shareSite26').onclick=async()=>{
