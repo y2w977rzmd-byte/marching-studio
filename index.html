@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>隊形編排室 v4.0 音樂與動作同步版</title><style>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>隊形編排室 v4.1 音樂與動作同步版</title><style>
 :root{font-family:-apple-system,BlinkMacSystemFont,'Microsoft JhengHei',sans-serif;color:#e8eefb;background:#0d1220}*{box-sizing:border-box}body{margin:0}header{padding:15px 18px;background:#171e30;border-bottom:1px solid #313d58;display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}h1{font-size:20px;margin:0}small{color:#9faec9}button,select,input{font:inherit}button{border:1px solid #465673;background:#26334d;color:#fff;border-radius:9px;padding:9px 12px;cursor:pointer}button:hover{background:#33476c}button.active,.primary{background:#1c7a72;border-color:#37aea0}button.danger{border-color:#8b4e59}input,select{background:#172239;border:1px solid #4a5b7c;color:white;padding:8px;border-radius:8px;min-width:0}input[type=number]{width:80px}.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:14px;padding:14px;max-width:1500px;margin:auto}.panel{background:#171f33;border:1px solid #303e5b;border-radius:15px;padding:14px}.sidebar{display:flex;flex-direction:column;gap:12px}.field{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:9px 0}.field label{font-size:13px;color:#c6d1e5}.field input,.field select{max-width:160px}.sectiontitle{font-weight:700;margin:4px 0 10px}.controls{display:flex;gap:7px;flex-wrap:wrap}.controls button{font-size:13px;padding:8px}.hint{font-size:12px;line-height:1.6;color:#9faec9}.canvasShell{padding:8px;background:#101729;border:1px solid #34435e;border-radius:12px;overflow:hidden}.canvas{width:100%;display:block;touch-action:none;user-select:none}.topline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}.sceneBar{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.sceneBar button{padding:8px 10px}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#b9c8e1;margin-top:10px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.status{color:#b7c8e5;font-size:12px;padding-top:8px}input[type=range]{width:100%;accent-color:#30c0ae}.footerrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}.filelabel{border:1px solid #465673;background:#26334d;color:#fff;border-radius:9px;padding:9px 12px;cursor:pointer;font-size:13px}#file{display:none}#toast{color:#9de3bf;font-size:12px;min-height:16px}.wide{grid-column:2}#rosterBreakdown{border-top:1px solid #35425b;padding-top:10px}#targetTotal,#actualTotal{font-size:14px} @media(max-width:850px){.layout{grid-template-columns:1fr}.wide{grid-column:1}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:530px){.sidebar{display:flex}.layout{padding:8px;gap:8px}.panel{padding:11px}header{padding:12px}h1{font-size:17px}.controls button{padding:7px}}
  .instrumentGrid{display:grid;grid-template-columns:1fr 70px;gap:7px;align-items:center;margin-bottom:7px;font-size:13px}.instrumentGrid input{width:70px!important}.audit{white-space:pre-line;font-size:12px;line-height:1.65;color:#d4e2f5}.audit strong{color:#f5d186}.sub{font-size:12px;color:#aebdd4}.tiny{font-size:12px}.panel select.full{width:100%;max-width:100%} @media(max-width:700px){button,select,input{min-height:42px}input,select{font-size:16px!important}.canvasShell{overscroll-behavior:contain}.canvas{touch-action:none}}
 </style><style id="simpleModeStyles">
@@ -160,7 +160,7 @@ body.ux-practice34 #svg [data-id]{cursor:default!important}
 <div class="mode-row"><strong>🎼 編舞工作台</strong><div><button type="button" id="simpleModeBtn" aria-pressed="true">✨ 簡單模式</button> <button type="button" id="advancedModeBtn" aria-pressed="false">⚙️ 專業工具</button></div></div>
 <p class="mode-guide" id="modeGuide">基本操作：設定人數 → 選隊形 → 新增段落 → 音樂與動作 → 播放預覽。進階設定已收起，不會刪除任何資料。</p>
 <div class="quick-actions"><button type="button" data-go="rosterPanel">① 人數</button><button type="button" data-go="quickFormation">② 隊形</button><button type="button" data-go="scenePanel">③ 下一段</button><button type="button" data-go="motionPanel">④ 音樂／動作</button><button type="button" data-go="stagePanel">⑤ 舞台</button></div>
-</div><header><div><h1>🥁 隊形編排室 <small>March & Field Studio · v4.0</small></h1><small>樂隊・樂旗隊｜遊行與戶外定點表演</small></div><div class="controls"><button id="save">下載作品</button><label class="filelabel" for="file">開啟作品</label><input id="file" type="file" accept=".json,application/json"></div></header>
+</div><header><div><h1>🥁 隊形編排室 <small>March & Field Studio · v4.1</small></h1><small>樂隊・樂旗隊｜遊行與戶外定點表演</small></div><div class="controls"><button id="save">下載作品</button><label class="filelabel" for="file">開啟作品</label><input id="file" type="file" accept=".json,application/json"></div></header>
 <div id="bootStatus" role="status" style="margin:10px 14px;padding:12px;border:1px solid #d9a348;background:#33291d;color:#ffe4a8;border-radius:9px;font-size:14px;line-height:1.5">⚠ 互動程式尚未啟動。如果你在 iPhone「檔案」或 ChatGPT 的預覽畫面閱讀這個檔案，按鈕可能完全無法操作。請改由可執行 JavaScript 的瀏覽器網頁網址開啟；本機 HTML 預覽未必支援。</div><div class="student-guide" id="studentGuide24" aria-label="快速開始編舞">
 <h2>🎵 來排一場精彩的表演！</h2>
 <p>第一次玩也沒關係。先試試範例，看看隊伍如何從方陣走成 V 字形，再慢慢改成你的創意。</p>
@@ -170,7 +170,7 @@ body.ux-practice34 #svg [data-id]{cursor:default!important}
 <button type="button" id="formation24">🔷 換個隊形</button>
 <button type="button" id="next24">➕ 下一個畫面</button>
 <button type="button" id="save24">💾 保存作品</button>
-</div><div class="student-feedback" id="feedback24" aria-live="polite"></div></div><div class="share25" id="sharePanel26" aria-label="分享作品"><div class="share25title">💚 分享給隊友</div><p>把編舞傳到 LINE 群組，大家就能一起討論。</p><div class="share25buttons"><button type="button" id="shareWork26">📤 分享作品檔案</button><button type="button" id="shareSite26">💚 複製連結到 LINE</button><button type="button" id="openWork26">📂 開啟收到的作品</button></div><p class="share25note" id="shareNote26" aria-live="polite">分享作品會傳送隊形與走位資料，不包含音樂檔。對方下載後可在網站開啟並修改自己的副本。</p></div><section class="ux34" aria-label="使用模式"><h2>🎺 今天想做什麼？</h2><p>先選擇玩法，再用下方工具。第一次使用可以按「一鍵試玩」。</p><div class="uxnav"><button type="button" id="uxCreate34" aria-pressed="true">🎨 創作隊形</button><button type="button" id="uxShow34" aria-pressed="false">🎬 播放表演</button><button type="button" id="uxPractice34" aria-pressed="false">🎯 練習走位</button></div><div class="uxinfo" id="uxInfo34" aria-live="polite">創作模式：拖曳隊員、選擇隊形，再新增下一段。</div></section><section class="timeline40" id="timeline40"><h2>🎵 音樂與隊形時間軸</h2><p>點選段落切換隊形；拖曳進度可預覽走位。音樂節點可快速跳轉。音樂檔仍需在本機載入。</p><div id="segments40" class="bar40" aria-label="隊形段落"></div><div class="actions40"><button id="prev40" type="button">◀ 前一段</button><button id="play40" type="button">▶ 播放</button><button id="next40" type="button">下一段 ▶</button><input id="seek40" type="range" min="0" max="1000" value="0" aria-label="本段播放進度"><output id="time40">0.0 秒</output></div><div class="actions40"><label for="slow40">排練速度</label><select id="slow40"><option value="1">正常</option><option value=".75">75%</option><option value=".5">50%</option></select><button id="cue40" type="button">📍 標記此刻</button><button id="export40" type="button">💾 下載作品</button></div><div id="cues40" class="cues40"></div></section><div class="creative27" id="creative27">
+</div><div class="student-feedback" id="feedback24" aria-live="polite"></div></div><div class="share25" id="sharePanel26" aria-label="分享作品"><div class="share25title">💚 分享給隊友</div><p>把編舞傳到 LINE 群組，大家就能一起討論。</p><div class="share25buttons"><button type="button" id="shareWork26">📤 分享作品檔案</button><button type="button" id="shareSite26">💚 複製連結到 LINE</button><button type="button" id="openWork26">📂 開啟收到的作品</button></div><p class="share25note" id="shareNote26" aria-live="polite">分享作品會傳送隊形與走位資料，不包含音樂檔。對方下載後可在網站開啟並修改自己的副本。</p></div><section class="ux34" aria-label="使用模式"><h2>🎺 今天想做什麼？</h2><p>先選擇玩法，再用下方工具。第一次使用可以按「一鍵試玩」。</p><div class="uxnav"><button type="button" id="uxCreate34" aria-pressed="true">🎨 創作隊形</button><button type="button" id="uxShow34" aria-pressed="false">🎬 播放表演</button><button type="button" id="uxPractice34" aria-pressed="false">🎯 練習走位</button></div><div class="uxinfo" id="uxInfo34" aria-live="polite">創作模式：拖曳隊員、選擇隊形，再新增下一段。</div></section><section class="timeline40" id="timeline40"><h2>🎵 音樂與隊形時間軸</h2><p>點選段落切換隊形；拖曳進度可預覽走位。音樂節點可快速跳轉。音樂檔仍需在本機載入。</p><div id="segments40" class="bar40" aria-label="隊形段落"></div><div class="actions40"><button id="prev40" type="button">◀ 前一段</button><button id="play40" type="button">▶ 播放</button><button id="next40" type="button">下一段 ▶</button><input id="seek40" type="range" min="0" max="1000" value="0" aria-label="本段播放進度"><output id="time40">0.0 秒</output></div><div class="actions40"><label for="slow40">排練速度</label><select id="slow40"><option value="1">正常</option><option value=".75">75%</option><option value=".5">50%</option></select><button id="cue40" type="button">📍 標記此刻</button><button id="export40" type="button">💾 下載作品</button></div><div id="cues40" class="cues40"></div></section><section class="timeline40" id="quality41"><h2>🛡️ 排練安全與趣味練習</h2><p>轉場檢查會偵測直線路徑在同一時間的近距離接觸；結果是排練輔助，仍需老師確認。</p><div class="actions40"><button id="check41" type="button">🔎 檢查下一段碰撞風險</button><label for="safeDist41">最小間距（公尺）</label><input id="safeDist41" type="number" min=".2" max="5" step=".1" value="1.5" style="width:75px"></div><div id="risks41" class="audit" aria-live="polite">尚未檢查。</div><div class="actions40"><button id="practice41" type="button">⭐ 完成這段練習</button><button id="resetPractice41" type="button">↺ 重設練習進度</button><span id="progress41">練習進度：0 段</span></div></section><div class="creative27" id="creative27">
 <div class="creative-head"><strong>🎨 編舞小幫手</strong><span>直接點隊員、拖曳位置；用下方工具快速完成</span></div>
 <div class="creative-tools">
 <button id="undo27" type="button">↶ 上一步</button><button id="zoomOut27" type="button">− 縮小</button><button id="zoomIn27" type="button">＋ 放大</button><button id="zoomReset27" type="button">適合畫面</button>
@@ -543,11 +543,39 @@ const ratio=Number($('slow40').value);
 if(!Number.isFinite(ratio)||ratio<=0)return;
 if(playing)$('play').click();
 const original=Number($('slow40').dataset.baseBpm)||lastSpeed;
-model.bpm=clamp(Math.round(original*ratio),40,220);$('bpm').value=model.bpm;update40();
+model.bpm=clamp(Math.round(original*ratio),40,220);$('bpm').value=model.bpm;
+const audio=$('musicPlayer');if(audio&&audio.src)audio.playbackRate=ratio;
+update40();
 };
 $('bpm').addEventListener('change',()=>{lastSpeed=Number(model.bpm)||120;$('slow40').dataset.baseBpm=String(lastSpeed);$('slow40').value='1';update40()});
 $('slow40').dataset.baseBpm=String(lastSpeed);
 update40();
+})();
+
+
+// v4.1 explicit collision risk analysis and practice achievements.
+(function(){
+const $=id=>document.getElementById(id);
+const done=new Set();
+try{const data=JSON.parse(localStorage.getItem('marchingPractice41')||'[]');if(Array.isArray(data))for(const x of data)if(Number.isInteger(x))done.add(x)}catch(e){}
+function show(){const n=[...done].filter(i=>i<model.scenes.length).length;$('progress41').textContent='練習進度：'+n+' / '+model.scenes.length+' 段'+(n===model.scenes.length&&n>0?' 🎉 全部完成！':'')}
+$('practice41').onclick=()=>{done.add(scene);try{localStorage.setItem('marchingPractice41',JSON.stringify([...done]))}catch(e){}show();msg('⭐ 第 '+(scene+1)+' 段練習完成！')};
+$('resetPractice41').onclick=()=>{if(!confirm('要清除這台裝置的練習紀錄嗎？'))return;done.clear();localStorage.removeItem('marchingPractice41');show()};
+$('check41').onclick=()=>{
+if(scene>=model.scenes.length-1){$('risks41').textContent='目前是最後一段，請先切換到前一段。';return}
+const a=model.scenes[scene].pos,b=model.scenes[scene+1].pos,ids=model.people.map(p=>p.id).filter(id=>a[id]&&b[id]),limit=Math.max(.2,Math.min(5,Number($('safeDist41').value)||1.5));
+const risk=[];let closest=Infinity;
+for(let i=0;i<ids.length;i++)for(let j=i+1;j<ids.length;j++){
+const x=ids[i],y=ids[j],p=a[x],q=a[y],u=b[x],v=b[y];
+const rx=p.x-q.x,ry=p.y-q.y,vx=(u.x-p.x)-(v.x-q.x),vy=(u.y-p.y)-(v.y-q.y);
+const den=vx*vx+vy*vy,t=den>1e-9?Math.max(0,Math.min(1,-(rx*vx+ry*vy)/den)):0;
+const d=Math.hypot(rx+vx*t,ry+vy*t);closest=Math.min(closest,d);
+if(d<limit)risk.push({x,y,d,t});
+}
+risk.sort((a,b)=>a.d-b.d);
+$('risks41').textContent=risk.length?'⚠️ 發現 '+risk.length+' 組可能過近的隊員（同步直線移動假設，門檻 '+limit+'m）。\n'+risk.slice(0,25).map(r=>r.x+' ↔ '+r.y+'：最近 '+r.d.toFixed(2)+'m，轉場 '+Math.round(r.t*100)+'%').join('\n')+(risk.length>25?'\n其餘 '+(risk.length-25)+' 組未列出':''):'✅ 在同步直線移動假設下，未發現低於 '+limit+'m 的隊員配對。最近距離：'+(Number.isFinite(closest)?closest.toFixed(2)+'m':'無法計算');
+};
+const prev=render;render=function(){prev();show()};show();
 })();
 
 refreshPeople();
