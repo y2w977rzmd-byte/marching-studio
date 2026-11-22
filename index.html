@@ -459,7 +459,7 @@ const d=JSON.parse(raw);
 if(!Array.isArray(d.people)||!Array.isArray(d.scenes)||!Number.isFinite(d.width)||!Number.isFinite(d.height)||d.people.length>400||d.scenes.length>100||!d.scenes.length)throw Error('作品資料格式不正確');
 if(!confirm('收到分享的編舞作品。開啟後會取代目前畫面上的作品，是否繼續？'))return;
 history();model={mode:d.mode==='parade'?'parade':'field',width:clamp(d.width,8,200),height:clamp(d.height,8,300),bpm:clamp(d.bpm||120,40,220),people:d.people,scenes:d.scenes};scene=0;selected=null;groupSelection33.clear();initPositions();sync();readRoster();resetPlayback();msg('已從分享連結開啟作品，可編輯並另存。音樂檔需自行載入。');
-history.replaceState(null,'',location.pathname+location.search);
+window.history.replaceState(null,'',location.pathname+location.search);
 }catch(e){msg('無法開啟分享作品：'+e.message)}
 })();
 
