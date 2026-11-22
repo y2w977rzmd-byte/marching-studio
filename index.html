@@ -196,29 +196,7 @@ function makeBook(){
   let rows=model.people.map(p=>{let a=s.pos[p.id],b=next?.pos[p.id];if(!a)return '';let dist=b?Math.hypot(b.x-a.x,b.y-a.y):0;return `<tr><td>${escPrint(p.id)}</td><td>${escPrint(names[p.instrument]||groups[p.type]||'未指定')}</td><td>${fmt(a.x)}, ${fmt(a.y)}</td><td>${b?`${fmt(b.x)}, ${fmt(b.y)}`:'—'}</td><td>${b?fmt(dist)+' m':'—'}</td></tr>`}).join('');
   pages.push(`<section class="page"><h2>第 ${idx+1} 段｜${escPrint(s.name)}</h2><div class="meta">隊員 ${model.people.length} 人　｜　${s.beats} 拍　｜　${model.bpm} BPM　｜　${next?'下一段轉場約 '+(s.beats*60/model.bpm).toFixed(1)+' 秒':'最後一段'}</div><div class="diagram">${svg}</div><div class="legendprint">● 樂隊　<span style="color:#db398a">● 樂旗</span>　<span style="color:#b47c00">● 鼓隊</span>　<span style="color:#7550c8">● 指揮</span>　 ⇢ 下一段移動路線</div><h3>隊員站位及轉場明細</h3><table><thead><tr><th>編號</th><th>樂器／編組</th><th>起點 X,Y (m)</th><th>終點 X,Y (m)</th><th>距離</th></tr></thead><tbody>${rows||'<tr><td colspan="5">尚未建立隊員</td></tr>'}</tbody></table></section>`);
  }
- return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}｜排練手冊</title><style>@page{size:A4 portrait;margin:13mm 12mm}*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Microsoft JhengHei",sans-serif;color:#1b2633;background:#e8edf3;margin:0} .toolbar{position:sticky;top:0;background:#15283b;color:#fff;padding:12px;text-align:center;z-index:5}.toolbar button{padding:10px 18px;border:0;border-radius:7px;background:#157d72;color:white;font-size:16px}.page{background:white;width:210mm;min-height:297mm;margin:15px auto;padding:13mm 12mm;box-shadow:0 3px 15px #9aa6b5;break-after:page;page-break-after:always}.cover{padding-top:55mm}.cover h1{font-size:27px}h2{font-size:19px;margin:0 0 8px}h3{font-size:13px;margin:12px 0 6px}.meta,.muted{font-size:11px;color:#536172}.diagram svg{display:block;width:100%;height:auto;max-height:140mm}.legendprint{font-size:10px;margin:4px 0 10px}table{border-collapse:collapse;width:100%;font-size:9px}th,td{border:1px solid #bcc6cf;padding:4px 5px;text-align:left}th{background:#edf2f6}thead{display:table-header-group}tr{break-inside:avoid;page-break-inside:avoid}@media print{body{background:white}.toolbar{display:none}.page{margin:0;padding:0;width:auto;min-height:0;box-shadow:none}.page:last-child{break-after:auto;page-break-after:auto}html{-webkit-print-color-adjust:exact;print-color-adjust:exact}}@media(max-width:800px){.page{width:100%;min-height:0;margin:0 auto 10px;padding:16px}.cover{padding-top:40px}}</style></head><body><div class="toolbar"><button onclick="window.print()">列印／儲存 PDF</button>　<span>iPhone：分享 → 列印 → 儲存 PDF</span></div>${pages.join('')}<script id="studentGuideScript24">
-(function(){
-function init(){
-const $=id=>document.getElementById(id),say=t=>{$('feedback24').textContent=t},go=id=>$(id)?.scrollIntoView({behavior:'smooth',block:'start'});
-$('team24').onclick=()=>go('rosterPanel');
-$('formation24').onclick=()=>go('quickFormation');
-$('next24').onclick=()=>{$('newscene').click();say('已新增段落。選擇下方的隊形，就能設定下一段走位。');go('quickFormation')};
-$('save24').onclick=()=>{$('save').click();say('已要求瀏覽器下載作品檔，請確認下載清單。')};
-$('demo24').onclick=()=>{
-const current=Number(($('actualTotal')?.textContent||'').match(/\d+/)?.[0]||0);
-if(current>0){say('目前已有隊員，為保護作品不會覆蓋。可直接新增下一段，或在進階功能中清空後再試做。');return}
-$('targetBand').value=16;$('targetFlag').value=8;$('targetDrum').value=0;$('targetLead').value=0;
-$('applyRoster').click();
-const templates=[...document.querySelectorAll('[data-template]')];
-const apply=name=>templates.find(x=>x.dataset.template===name)?.click();
-apply('rows');$('newscene').click();apply('v');
-const prev=$('prev');if(prev)prev.click();
-say('已建立 24 人、兩個隊形：方陣 → V 字。按舞台上的「▶ 播放走位」即可預覽。');go('stagePanel');
-};
-}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-})();
-</script></body></html>`;
+ return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}｜排練手冊</title><style>@page{size:A4 portrait;margin:13mm 12mm}*{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Microsoft JhengHei",sans-serif;color:#1b2633;background:#e8edf3;margin:0} .toolbar{position:sticky;top:0;background:#15283b;color:#fff;padding:12px;text-align:center;z-index:5}.toolbar button{padding:10px 18px;border:0;border-radius:7px;background:#157d72;color:white;font-size:16px}.page{background:white;width:210mm;min-height:297mm;margin:15px auto;padding:13mm 12mm;box-shadow:0 3px 15px #9aa6b5;break-after:page;page-break-after:always}.cover{padding-top:55mm}.cover h1{font-size:27px}h2{font-size:19px;margin:0 0 8px}h3{font-size:13px;margin:12px 0 6px}.meta,.muted{font-size:11px;color:#536172}.diagram svg{display:block;width:100%;height:auto;max-height:140mm}.legendprint{font-size:10px;margin:4px 0 10px}table{border-collapse:collapse;width:100%;font-size:9px}th,td{border:1px solid #bcc6cf;padding:4px 5px;text-align:left}th{background:#edf2f6}thead{display:table-header-group}tr{break-inside:avoid;page-break-inside:avoid}@media print{body{background:white}.toolbar{display:none}.page{margin:0;padding:0;width:auto;min-height:0;box-shadow:none}.page:last-child{break-after:auto;page-break-after:auto}html{-webkit-print-color-adjust:exact;print-color-adjust:exact}}@media(max-width:800px){.page{width:100%;min-height:0;margin:0 auto 10px;padding:16px}.cover{padding-top:40px}}</style></head><body><div class="toolbar"><button onclick="window.print()">列印／儲存 PDF</button>　<span>iPhone：分享 → 列印 → 儲存 PDF</span></div>${pages.join('')}</body></html>`;
 }
 $('printBook').onclick=()=>{
  const html=makeBook();
@@ -367,6 +345,28 @@ target.scrollIntoView({behavior:'smooth',block:'start'});
 }));
 let saved='simple';try{saved=localStorage.getItem('marchingMode')||'simple'}catch(e){}
 setMode(saved==='advanced'?'advanced':'simple');
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script><script id="studentGuideScript24">
+(function(){
+function init(){
+const $=id=>document.getElementById(id),say=t=>{$('feedback24').textContent=t},go=id=>$(id)?.scrollIntoView({behavior:'smooth',block:'start'});
+$('team24').onclick=()=>go('rosterPanel');
+$('formation24').onclick=()=>go('quickFormation');
+$('next24').onclick=()=>{$('newscene').click();say('已新增段落。選擇下方的隊形，就能設定下一段走位。');go('quickFormation')};
+$('save24').onclick=()=>{$('save').click();say('已要求瀏覽器下載作品檔，請確認下載清單。')};
+$('demo24').onclick=()=>{
+const current=Number(($('actualTotal')?.textContent||'').match(/\d+/)?.[0]||0);
+if(current>0){say('目前已有隊員，為保護作品不會覆蓋。可直接新增下一段，或在進階功能中清空後再試做。');return}
+$('targetBand').value=16;$('targetFlag').value=8;$('targetDrum').value=0;$('targetLead').value=0;
+$('applyRoster').click();
+const templates=[...document.querySelectorAll('[data-template]')];
+const apply=name=>templates.find(x=>x.dataset.template===name)?.click();
+apply('rows');$('newscene').click();apply('v');
+const prev=$('prev');if(prev)prev.click();
+say('已建立 24 人、兩個隊形：方陣 → V 字。按舞台上的「▶ 播放走位」即可預覽。');go('stagePanel');
+};
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
