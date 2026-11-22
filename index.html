@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>隊形編排室 v2.6 音樂與動作同步版</title><style>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>隊形編排室 v3.0 音樂與動作同步版</title><style>
 :root{font-family:-apple-system,BlinkMacSystemFont,'Microsoft JhengHei',sans-serif;color:#e8eefb;background:#0d1220}*{box-sizing:border-box}body{margin:0}header{padding:15px 18px;background:#171e30;border-bottom:1px solid #313d58;display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}h1{font-size:20px;margin:0}small{color:#9faec9}button,select,input{font:inherit}button{border:1px solid #465673;background:#26334d;color:#fff;border-radius:9px;padding:9px 12px;cursor:pointer}button:hover{background:#33476c}button.active,.primary{background:#1c7a72;border-color:#37aea0}button.danger{border-color:#8b4e59}input,select{background:#172239;border:1px solid #4a5b7c;color:white;padding:8px;border-radius:8px;min-width:0}input[type=number]{width:80px}.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:14px;padding:14px;max-width:1500px;margin:auto}.panel{background:#171f33;border:1px solid #303e5b;border-radius:15px;padding:14px}.sidebar{display:flex;flex-direction:column;gap:12px}.field{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:9px 0}.field label{font-size:13px;color:#c6d1e5}.field input,.field select{max-width:160px}.sectiontitle{font-weight:700;margin:4px 0 10px}.controls{display:flex;gap:7px;flex-wrap:wrap}.controls button{font-size:13px;padding:8px}.hint{font-size:12px;line-height:1.6;color:#9faec9}.canvasShell{padding:8px;background:#101729;border:1px solid #34435e;border-radius:12px;overflow:hidden}.canvas{width:100%;display:block;touch-action:none;user-select:none}.topline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}.sceneBar{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.sceneBar button{padding:8px 10px}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#b9c8e1;margin-top:10px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.status{color:#b7c8e5;font-size:12px;padding-top:8px}input[type=range]{width:100%;accent-color:#30c0ae}.footerrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}.filelabel{border:1px solid #465673;background:#26334d;color:#fff;border-radius:9px;padding:9px 12px;cursor:pointer;font-size:13px}#file{display:none}#toast{color:#9de3bf;font-size:12px;min-height:16px}.wide{grid-column:2}#rosterBreakdown{border-top:1px solid #35425b;padding-top:10px}#targetTotal,#actualTotal{font-size:14px} @media(max-width:850px){.layout{grid-template-columns:1fr}.wide{grid-column:1}.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:530px){.sidebar{display:flex}.layout{padding:8px;gap:8px}.panel{padding:11px}header{padding:12px}h1{font-size:17px}.controls button{padding:7px}}
  .instrumentGrid{display:grid;grid-template-columns:1fr 70px;gap:7px;align-items:center;margin-bottom:7px;font-size:13px}.instrumentGrid input{width:70px!important}.audit{white-space:pre-line;font-size:12px;line-height:1.65;color:#d4e2f5}.audit strong{color:#f5d186}.sub{font-size:12px;color:#aebdd4}.tiny{font-size:12px}.panel select.full{width:100%;max-width:100%} @media(max-width:700px){button,select,input{min-height:42px}input,select{font-size:16px!important}.canvasShell{overscroll-behavior:contain}.canvas{touch-action:none}}
 </style><style id="simpleModeStyles">
@@ -124,11 +124,23 @@ body.simple-mode .legend{opacity:.86}
 .share25 .share25note{font-size:12px;color:#c6dbd8;margin:10px 0 0}
 body.advanced-mode .share25{display:block}
 @media(max-width:650px){.share25{margin:9px 8px;padding:14px}.share25buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.share25buttons button{font-size:12px;padding:8px 6px}.share25buttons #shareWork26{grid-column:span 2}}
+</style><style id="creativeStyles27">
+.creative27{max-width:1250px;margin:10px auto;padding:14px 18px;border:1px solid #5c7597;background:#202c42;border-radius:20px}
+.creative-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-bottom:11px}.creative-head strong{font-size:18px}.creative-head span{font-size:13px;color:#bfcde1}
+.creative-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.creative-tools button,.creative-tools select{border-radius:999px;min-height:40px;padding:7px 12px}.creative-tools label{font-size:13px;color:#d7e7f4}
+.creative-result{white-space:pre-line;font-size:13px;line-height:1.65;color:#d5e6f2}
+body.student-view27 .sidebar,body.student-view27 #studio20,body.student-view27 .student-guide,body.student-view27 #sharePanel26,body.student-view27 .mode-switcher{display:none!important}
+body.student-view27 .creative-tools button:not(#student27):not(#route27),body.student-view27 .creative-tools #music27{display:none!important}
+body.student-view27 .layout main{width:100%!important}
+body.student-view27 #svg [data-id]{cursor:default!important}
+body.student-view27 .footerrow #reset{display:none}
+body.simple-mode .canvasShell svg{touch-action:none}
+@media(max-width:650px){.creative27{margin:8px;padding:12px}.creative-tools{gap:6px}.creative-tools button{font-size:12px;padding:7px 10px}}
 </style></head><body class="simple-mode"><div class="mode-switcher" id="modeSwitcher" role="region" aria-label="操作模式">
 <div class="mode-row"><strong>🎼 編舞工作台</strong><div><button type="button" id="simpleModeBtn" aria-pressed="true">✨ 簡單模式</button> <button type="button" id="advancedModeBtn" aria-pressed="false">⚙️ 專業工具</button></div></div>
 <p class="mode-guide" id="modeGuide">基本操作：設定人數 → 選隊形 → 新增段落 → 音樂與動作 → 播放預覽。進階設定已收起，不會刪除任何資料。</p>
 <div class="quick-actions"><button type="button" data-go="rosterPanel">① 人數</button><button type="button" data-go="quickFormation">② 隊形</button><button type="button" data-go="scenePanel">③ 下一段</button><button type="button" data-go="motionPanel">④ 音樂／動作</button><button type="button" data-go="stagePanel">⑤ 舞台</button></div>
-</div><header><div><h1>🥁 隊形編排室 <small>March & Field Studio · v2.6</small></h1><small>樂隊・樂旗隊｜遊行與戶外定點表演</small></div><div class="controls"><button id="save">下載作品</button><label class="filelabel" for="file">開啟作品</label><input id="file" type="file" accept=".json,application/json"></div></header>
+</div><header><div><h1>🥁 隊形編排室 <small>March & Field Studio · v3.0</small></h1><small>樂隊・樂旗隊｜遊行與戶外定點表演</small></div><div class="controls"><button id="save">下載作品</button><label class="filelabel" for="file">開啟作品</label><input id="file" type="file" accept=".json,application/json"></div></header>
 <div id="bootStatus" role="status" style="margin:10px 14px;padding:12px;border:1px solid #d9a348;background:#33291d;color:#ffe4a8;border-radius:9px;font-size:14px;line-height:1.5">⚠ 互動程式尚未啟動。如果你在 iPhone「檔案」或 ChatGPT 的預覽畫面閱讀這個檔案，按鈕可能完全無法操作。請改由可執行 JavaScript 的瀏覽器網頁網址開啟；本機 HTML 預覽未必支援。</div><div class="student-guide" id="studentGuide24" aria-label="快速開始編舞">
 <h2>🎵 來排一場精彩的表演！</h2>
 <p>第一次玩也沒關係。先試試範例，看看隊伍如何從方陣走成 V 字形，再慢慢改成你的創意。</p>
@@ -138,7 +150,15 @@ body.advanced-mode .share25{display:block}
 <button type="button" id="formation24">🔷 換個隊形</button>
 <button type="button" id="next24">➕ 下一個畫面</button>
 <button type="button" id="save24">💾 保存作品</button>
-</div><div class="student-feedback" id="feedback24" aria-live="polite"></div></div><div class="share25" id="sharePanel26" aria-label="分享作品"><div class="share25title">💚 分享給隊友</div><p>把編舞傳到 LINE 群組，大家就能一起討論。</p><div class="share25buttons"><button type="button" id="shareWork26">📤 分享編舞作品</button><button type="button" id="shareSite26">🔗 分享編舞網站</button><button type="button" id="openWork26">📂 開啟收到的作品</button></div><p class="share25note" id="shareNote26" aria-live="polite">分享作品會傳送隊形與走位資料，不包含音樂檔。對方下載後可在網站開啟並修改自己的副本。</p></div><div class="layout"><aside class="sidebar"><section class="panel"><div class="sectiontitle">場地與基本設定</div><div class="field"><label for="mode">表演模式</label><select id="mode"><option value="field">定點表演／操場</option><option value="parade">道路遊行</option></select></div><div class="field"><label for="w">場地寬度（公尺）</label><input id="w" type="number" min="8" max="200" value="40"></div><div class="field"><label for="h">場地長度（公尺）</label><input id="h" type="number" min="8" max="300" value="30"></div><div class="field"><label for="spacing">新增間距（公尺）</label><input id="spacing" type="number" min="0.5" max="8" step="0.5" value="2"></div><div class="field"><label for="count">新增隊員數</label><input id="count" type="number" min="1" max="150" value="8"></div><div class="field"><label for="group">隊員類別</label><select id="group"><option value="band">樂隊</option><option value="flag">樂旗</option><option value="drum">打擊／鼓隊</option><option value="lead">指揮／引導</option></select></div><div class="controls"><button id="add" class="primary">＋ 新增隊員</button><button id="clear" class="danger">清空隊員</button></div></section>
+</div><div class="student-feedback" id="feedback24" aria-live="polite"></div></div><div class="share25" id="sharePanel26" aria-label="分享作品"><div class="share25title">💚 分享給隊友</div><p>把編舞傳到 LINE 群組，大家就能一起討論。</p><div class="share25buttons"><button type="button" id="shareWork26">📤 分享編舞作品</button><button type="button" id="shareSite26">🔗 分享編舞網站</button><button type="button" id="openWork26">📂 開啟收到的作品</button></div><p class="share25note" id="shareNote26" aria-live="polite">分享作品會傳送隊形與走位資料，不包含音樂檔。對方下載後可在網站開啟並修改自己的副本。</p></div><div class="creative27" id="creative27">
+<div class="creative-head"><strong>🎨 編舞小幫手</strong><span>直接點隊員、拖曳位置；用下方工具快速完成</span></div>
+<div class="creative-tools">
+<button id="undo27" type="button">↶ 上一步</button><button id="zoomOut27" type="button">− 縮小</button><button id="zoomIn27" type="button">＋ 放大</button><button id="zoomReset27" type="button">適合畫面</button>
+<button id="card27" type="button">🖼️ 下載走位圖</button><button id="student27" type="button">👀 學生觀看</button>
+</div>
+<div class="creative-tools"><label for="person27">我的隊員編號</label><select id="person27"><option value="">全隊</option></select><button id="route27" type="button">📍 我的走位表</button><button id="music27" type="button">🎵 選音樂</button><button id="safety27" type="button">🛡️ 檢查走位</button></div>
+<div id="routeResult27" class="creative-result" aria-live="polite"></div>
+</div><div class="layout"><aside class="sidebar"><section class="panel"><div class="sectiontitle">場地與基本設定</div><div class="field"><label for="mode">表演模式</label><select id="mode"><option value="field">定點表演／操場</option><option value="parade">道路遊行</option></select></div><div class="field"><label for="w">場地寬度（公尺）</label><input id="w" type="number" min="8" max="200" value="40"></div><div class="field"><label for="h">場地長度（公尺）</label><input id="h" type="number" min="8" max="300" value="30"></div><div class="field"><label for="spacing">新增間距（公尺）</label><input id="spacing" type="number" min="0.5" max="8" step="0.5" value="2"></div><div class="field"><label for="count">新增隊員數</label><input id="count" type="number" min="1" max="150" value="8"></div><div class="field"><label for="group">隊員類別</label><select id="group"><option value="band">樂隊</option><option value="flag">樂旗</option><option value="drum">打擊／鼓隊</option><option value="lead">指揮／引導</option></select></div><div class="controls"><button id="add" class="primary">＋ 新增隊員</button><button id="clear" class="danger">清空隊員</button></div></section>
 <section class="panel" id="rosterPanel"><div class="sectiontitle">👥 我的隊伍</div>
 <p class="hint">先輸入每組實際人數，再套用編制。增減人員會同步更新所有段落，保留未刪除隊員的原有走位。</p>
 <div class="field"><label for="targetBand">🎺 樂隊（人）</label><input id="targetBand" type="number" min="0" max="400" value="24"></div>
@@ -359,6 +379,30 @@ $('backup20').onclick=()=>download('樂隊編舞專案_v2.0.json',JSON.stringify
 const render20=render;render=function(){render20();peopleList20();drawStage20()};
 const file20=$('file').onchange;$('file').onchange=async e=>{await file20(e);showCues20();peopleList20();drawStage20()};
 showCues20();peopleList20();
+
+// Student-friendly helper controls share the live editor model.
+(function(){
+const get=id=>document.getElementById(id),msg=t=>{get('routeResult27').textContent=t};
+const peopleSelect=get('person27');
+function refreshPeople(){const current=peopleSelect.value;peopleSelect.replaceChildren(new Option('全隊',''));for(const p of model.people)peopleSelect.add(new Option((p.type==='flag'?'🚩':p.type==='drum'?'🥁':p.type==='lead'?'🎼':'🎺')+' '+p.label,p.id));if([...peopleSelect.options].some(o=>o.value===current))peopleSelect.value=current}
+const originalRender=render;render=function(){originalRender();refreshPeople();const id=peopleSelect.value;if(id){for(const g of get('svg').querySelectorAll('[data-id]')){const on=g.getAttribute('data-id')===id;g.style.opacity=on?'1':'.18';if(on){const circle=g.querySelector('circle');if(circle){circle.setAttribute('stroke','#fff');circle.setAttribute('stroke-width','4')}}}}};
+get('undo27').onclick=()=>get('undo').click();
+let zoom=1;
+function applyZoom(){const svg=get('svg');svg.style.transform='scale('+zoom+')';svg.style.transformOrigin='center center';svg.style.transition='transform .18s';msg('目前畫面 '+Math.round(zoom*100)+'%。縮放只影響觀看，不改變實際座標。')}
+get('zoomIn27').onclick=()=>{zoom=Math.min(2,Math.round((zoom+.15)*100)/100);applyZoom()};
+get('zoomOut27').onclick=()=>{zoom=Math.max(.65,Math.round((zoom-.15)*100)/100);applyZoom()};
+get('zoomReset27').onclick=()=>{zoom=1;applyZoom()};
+get('card27').onclick=()=>get('exportpng').click();
+get('music27').onclick=()=>get('audioFile').click();
+get('safety27').onclick=()=>{get('auditButton').click();msg('已完成基本走位檢查。請切換專業工具查看詳細結果；實地排練仍須確認安全。')};
+get('student27').onclick=()=>{const active=document.body.classList.toggle('student-view27');get('student27').textContent=active?'✏️ 返回編輯':'👀 學生觀看';msg(active?'學生觀看模式：可選擇自己的編號，查看個人走位。':'已返回編輯模式。')};
+get('route27').onclick=()=>{const id=peopleSelect.value;if(!id){msg('先選擇你的隊員編號，再按「我的走位表」。');return}const p=model.people.find(x=>x.id===id);if(!p)return;let lines=['隊員 '+p.label+' 的走位表'];for(let i=0;i<model.scenes.length;i++){const a=model.scenes[i].pos[id],b=model.scenes[i+1]?.pos[id];if(!a)continue;let detail='第 '+(i+1)+' 段：位置（'+a.x.toFixed(1)+'，'+a.y.toFixed(1)+'）公尺';if(b)detail+=' → 下一段移動 '+Math.hypot(b.x-a.x,b.y-a.y).toFixed(1)+' 公尺／'+model.scenes[i].beats+' 拍';lines.push(detail)}msg(lines.join('\n'))};
+peopleSelect.onchange=()=>render();
+get('svg').addEventListener('pointerdown',e=>{if(document.body.classList.contains('student-view27')){e.stopImmediatePropagation();return}},true);
+get('svg').addEventListener('pointermove',e=>{if(document.body.classList.contains('student-view27'))e.stopImmediatePropagation()},true);
+get('svg').addEventListener('pointerup',e=>{if(document.body.classList.contains('student-view27'))e.stopImmediatePropagation()},true);
+refreshPeople();
+})();
 
 })();
 
