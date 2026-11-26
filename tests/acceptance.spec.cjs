@@ -237,3 +237,31 @@ test('R02 刪除音樂節點更新本機備份', async ({page}) => {
  await click(page,'clearCues20');
  await expect.poll(storedCues).toEqual([]);
 });
+
+test('R03 播放抵達末段時，SVG 和 Canvas 與手動進入的起始姿態一致', async ({page}) => {
+ await demo(page);
+ await click(page,'advancedModeBtn');
+ await fill(page,'beats',4);
+ await fill(page,'bpm',120);
+ await click(page,'next');
+ await page.locator('#motionScope').selectOption('all');
+ await page.locator('#motionAction').selectOption('hold');
+ await fill(page,'motionStart',1);
+ await fill(page,'motionLength',4);
+ await click(page,'applyMotion');
+ await click(page,'showStage20');
+
+ const holds=page.locator('#svg g[pointer-events="none"] line[x1="-10"]');
+ const canvas=page.locator('#stage20');
+ await expect(holds).toHaveCount(24);
+ await expect(canvas).toBeVisible();
+ const manualCanvas=await canvas.evaluate(node=>node.toDataURL());
+
+ await click(page,'prev');
+ await click(page,'play');
+ await expect(page.locator('#sceneTitle')).toHaveText('第 2 段');
+ await expect(page.locator('#progress')).toHaveValue('1000');
+ expect.soft(await holds.count(),'SVG 末段定格人數').toBe(24);
+ const arrivedCanvas=await canvas.evaluate(node=>node.toDataURL());
+ expect.soft(arrivedCanvas===manualCanvas,'Canvas 抵達畫面與手動進入畫面逐像素一致').toBe(true);
+});
